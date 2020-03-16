@@ -1,0 +1,10 @@
+Value epipe (\d+)
+Value desc (\S+)
+Value sap (\S+)
+Value spoke (\S+)
+
+Start
+  ^\s+epipe\s+${epipe}.*
+  ^\s+description\s+${desc}
+  ^\s+sap\s+${sap}.*
+  ^\s+spoke-sdp\s+${spoke} -> Record

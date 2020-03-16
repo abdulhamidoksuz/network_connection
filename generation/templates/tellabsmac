@@ -1,0 +1,12 @@
+Value Required description (\S+)
+Value ip (\d+.\d+.\d+.\d+)
+Value mac (([0-9a-f]{2}:){5}[0-9a-f]{2})
+Value interface (\w+[0-9]+/[0-9]+(/[0-9]+)?)
+
+Start
+  ^.Command sent
+  ^.*show arp\s+vrf\s+${description} -> Test
+
+Test
+  ^${ip}\s+\d*\s+${mac}\s+${interface}
+  ^.Command completed -> Record Start

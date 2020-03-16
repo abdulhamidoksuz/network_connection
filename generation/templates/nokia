@@ -1,0 +1,17 @@
+Value Filldown vprn (\d+)
+Value remote ([^:]+)
+Value interface (\S+)
+Value address ([^/]*)
+Value sap ([^(:|\s)]*)
+
+
+Start
+  ^.configure\sservice\svprn\s${vprn}.*
+  ^\s+route.distinguisher\s${remote}.*
+  ^\s*interface\s${interface}.* -> Collect
+
+Collect
+  ^\s+address\s${address}.*
+  ^\s+sap\s${sap}.* -> Record Start
+
+
